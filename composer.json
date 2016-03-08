@@ -1,0 +1,10 @@
+{
+    "name": "chatbox-inc/mail",
+    "authors": [
+        {
+            "name": "mikakane",
+            "email": "mikakane2@gmail.com"
+        }
+    ],
+    "require": {}
+}
