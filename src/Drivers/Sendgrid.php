@@ -10,9 +10,10 @@ class Sendgrid implements MailDriverInterface
 {
 
 
+
     public function send(MessageInterface $message)
     {
-        if(is_null($envelope->getTo())){
+        if(count($message->getToList()) === 0){
             return null;
         }
 

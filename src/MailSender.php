@@ -11,21 +11,20 @@ namespace Chatbox\Mail;
 
 class MailSender
 {
-    static public function active()
-    {
+    /** @var MailDriverInterface[] */
+    protected $drivers = [];
 
+    public function push(MailDriverInterface $driver){
+        array_push($this->drivers,$driver);
     }
-
-
-    protected $drivers;
-
-
-
 
     public function send(MessageInterface $message)
     {
-
-
+        error_log("send message");
+        foreach ($this->drivers as $driver) {
+            error_log("send message");
+            $driver->send($message);
+        }
     }
 
 }
