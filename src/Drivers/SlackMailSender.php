@@ -30,10 +30,8 @@ class SlackMailSender implements MailDriverInterface
         $time = date("Y-m-d H:i:s");
 
         $text = "
-MESSAGE DERIVERED AT $time
-[TO] {$email}      [FROM] {$message->getFrom()}
-SUBJECT: {$message->getSubject()}
-TEXT: {$message->getTextBody()}
+
+
         ";
 
         $data = [
@@ -41,10 +39,23 @@ TEXT: {$message->getTextBody()}
             "text" => $text,
             "channel" => $channel,
         ];
+        $data["icon_emoji"] = ":mailbox_with_mail:";
+        $data["username"] = "Debug Mail";
+        $data["text"] = "SLACK DEBUG MAILER";
+        $data["attachments"] = json_encode([
+            [
+                "color"=> "#36a64f",
+                "pretext"=> "MESSAGE DERIVERED AT $time",
+                "title"=> "[TO] {$email}      [FROM] {$message->getFrom()}",
+                "title_link"=> "",
+                "text"=> "
+SUBJECT: {$message->getSubject()}
+TEXT: {$message->getTextBody()}
+                "
+            ]
+        ]);
+
         $url = "https://slack.com/api/chat.postMessage?".http_build_query($data);
         $res = file_get_contents($url);
-        $this->getLogger()->debug("slack $slackApiKey");
-        $this->getLogger()->debug("slack $channel");
-        $this->getLogger()->debug("slack $res");
     }
 }
