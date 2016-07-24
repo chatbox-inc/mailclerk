@@ -25,6 +25,7 @@
     },
     "require-dev": {
         "laravel/lumen": "^5.2",
-        "phpunit/phpunit": "^5.4"
+        "phpunit/phpunit": "^5.4",
+        "sendgrid/sendgrid": "^5.0"
     }
 }

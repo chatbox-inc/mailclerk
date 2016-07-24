@@ -1,8 +1,8 @@
 <?php
 namespace Chatbox\MailClerk;
 
+use Chatbox\MailClerk\Transport\SendGridTransport;
 use Chatbox\MailClerk\Transport\ArrayTransport;
-use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Mail\MailServiceProvider;
 use Illuminate\Mail\TransportManager;
 use Illuminate\Support\ServiceProvider;
@@ -25,8 +25,8 @@ class MailClerkServiceProvider extends ServiceProvider
 
             });
             $manager->extend("sendgrid",function(){
-                return new ArrayTransport();
-
+                $sendgrid = new \SendGrid(env("SENDGRID_APIKEY"));
+                return new SendGridTransport($sendgrid);
             });
             $manager->extend("array",function(){
 
@@ -35,9 +35,5 @@ class MailClerkServiceProvider extends ServiceProvider
             });
             return $manager;
         });
-
-
     }
-
-
 }
