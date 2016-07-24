@@ -1,6 +1,7 @@
 <?php
 namespace Chatbox\MailClerk;
 
+use Chatbox\MailClerk\Transport\SlackTransport;
 use Chatbox\MailClerk\Transport\SendGridTransport;
 use Chatbox\MailClerk\Transport\ArrayTransport;
 use Illuminate\Mail\MailServiceProvider;
@@ -20,9 +21,9 @@ class MailClerkServiceProvider extends ServiceProvider
 
         $this->app->extend("swift.transport",function(TransportManager $manager){
             $manager->extend("slack",function(){
-
-                return new ArrayTransport();
-
+                $token = env("SLACKMAIL_APIKEY");
+                $channel = env("SLACKMAIL_CHANNEL");
+                return new SlackTransport($token,$channel);
             });
             $manager->extend("sendgrid",function(){
                 $sendgrid = new \SendGrid(env("SENDGRID_APIKEY"));
