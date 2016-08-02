@@ -26,8 +26,12 @@ class MailClerkServiceProvider extends ServiceProvider
                 return new SlackTransport($token,$channel);
             });
             $manager->extend("sendgrid",function(){
-                $sendgrid = new \SendGrid(env("SENDGRID_APIKEY"));
-                return new SendGridTransport($sendgrid);
+                if(class_exists(\SendGrid::class)){
+                    $sendgrid = new \SendGrid(env("SENDGRID_APIKEY"));
+                    return new SendGridTransport($sendgrid);
+                }else{
+                    throw new \Exception("SendGrid class not found. plz install via `composer install sendgrid/sendgrid`")
+                }
             });
             $manager->extend("array",function(){
 
