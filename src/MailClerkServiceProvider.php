@@ -30,7 +30,7 @@ class MailClerkServiceProvider extends ServiceProvider
                     $sendgrid = new \SendGrid(env("SENDGRID_APIKEY"));
                     return new SendGridTransport($sendgrid);
                 }else{
-                    throw new \Exception("SendGrid class not found. plz install via `composer install sendgrid/sendgrid`");
+                    throw new \Exception("SendGrid class not found. plz install via `composer require sendgrid/sendgrid`");
                 }
             });
             $manager->extend("array",function(){
