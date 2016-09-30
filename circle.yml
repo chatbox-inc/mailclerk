@@ -3,7 +3,6 @@ machine:
     version: 7.0.4
   environment:
     DB_CONNECTION: sqlite
-database:
 test:
   override:
     - make test

@@ -2,6 +2,7 @@
 
 [![Latest Stable Version](https://poser.pugx.org/chatbox-inc/mailclerk/version)](https://packagist.org/packages/chatbox-inc/mailclerk)
 
+[![CircleCI](https://circleci.com/gh/chatbox-inc/mailclerk.svg?style=svg)](https://circleci.com/gh/chatbox-inc/mailclerk)
 
 Laravel 5.3 対応
 
