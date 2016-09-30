@@ -1,5 +1,8 @@
 # メール送信周りの諸処理
 
+[![Latest Stable Version](https://poser.pugx.org/chatbox-inc/mailclerk/version)](https://packagist.org/packages/chatbox-inc/mailclerk)
+
+
 Laravel 5.3 対応
 
 Sendableに対する対応を追加。
