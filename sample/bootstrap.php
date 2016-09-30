@@ -95,4 +95,7 @@ $app->singleton(
 //    require __DIR__.'/../app/Http/routes.php';
 //});
 
+$app->configure("view");
+$app->register(\Illuminate\View\ViewServiceProvider::class);
+
 return $app;
