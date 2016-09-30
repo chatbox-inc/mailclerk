@@ -21,7 +21,7 @@
         ]
     },
     "require": {
-        "illuminate/mail": "^5.2"
+        "illuminate/mail": "^5.3"
     },
     "require-dev": {
         "laravel/lumen": "^5.2",

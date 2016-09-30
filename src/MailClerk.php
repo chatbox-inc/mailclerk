@@ -8,11 +8,12 @@
 
 namespace Chatbox\MailClerk;
 
+use Illuminate\Contracts\Mail\Mailable;
 use Illuminate\Mail\Mailer;
-use Illuminate\Contracts\Mail\Mailer as MailerContract;
 
 class MailClerk
 {
+    /** @var Mailer  */
     protected $mailer;
 
     protected $queue = null;
@@ -20,7 +21,7 @@ class MailClerk
     /**
      * MailSender constructor.
      */
-    public function __construct(MailerContract $mailer)
+    public function __construct(Mailer $mailer)
     {
         $this->mailer = $mailer;
     }
@@ -32,11 +33,12 @@ class MailClerk
         $this->queue = $useQueue;
     }
 
-    public function publish($view,$data,$cb){
+    public function publish(Mailable $mailable){
         if($this->queue && $this->mailer instanceof Mailer){
-            return $this->mailer->queue($view,$data,$cb,$this->queue);
+            $delay = env("MAIL_DEFAULT_DELAY",0);
+            return $this->mailer->laterOn($this->queue,$delay,$mailable);
         }else{
-            $this->mailer->send($view,$data,$cb);
+            $this->mailer->send($mailable);
         }
     }
 }
