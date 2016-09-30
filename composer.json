@@ -16,7 +16,6 @@
             "App\\": "./sample/app/"
         },
         "classmap":[
-            "./sample/database/",
             "./tests/"
         ]
     },
