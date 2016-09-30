@@ -95,6 +95,4 @@ $app->singleton(
 //    require __DIR__.'/../app/Http/routes.php';
 //});
 
-$app["config"]['view.compiled'] = realpath(storage_path("cache"));
-
 return $app;

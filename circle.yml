@@ -4,7 +4,6 @@ machine:
   environment:
     DB_CONNECTION: sqlite
     SENDGRID_APIKEY: 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
-    SLACKMAIL_APIKEY: xoxp-3344282630-3344282634-62637096065-87bb418694
     SLACKMAIL_CHANNEL: #ci
     TEST_MAIL_TO: t.goto@chatbox-inc.com
     TEST_MAIL_FROM: t.goto@chatbox-inc.com
