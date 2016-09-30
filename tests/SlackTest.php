@@ -18,11 +18,7 @@ class SlackTest extends TestCase
         try{
             /** @var \Chatbox\MailClerk\MailClerk $mail */
             $mail = app(Chatbox\MailClerk\MailClerk::class);
-            $result = $mail->publish("hoge",[],function($m){
-                $m->from("t.goto@chatbox-inc.com");
-                $m->to("t.goto@chatbox-inc.com");
-                $m->subject("hgoehoge");
-            });
+            $result = $mail->publish(new \App\TestMail());
             $this->assertTrue(true);
         }catch(\Chatbox\MailClerk\Transport\SendGridTransportException $e){
             if(!env("SLACKMAIL_APIKEY")){

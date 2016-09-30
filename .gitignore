@@ -1,5 +1,5 @@
 /vendor
 /sample/.env
 /composer.lock
-/sample/storage/logs/*
-!/sample/storage/logs/.gitempty
+/sample/storage/*
+!.gitempty

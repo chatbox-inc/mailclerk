@@ -18,10 +18,7 @@ class ArrayTest extends TestCase
         $this->assertEquals([],ArrayTransport::$mailbox);
         /** @var \Chatbox\MailClerk\MailClerk $mail */
         $mail = app(Chatbox\MailClerk\MailClerk::class);
-        $result = $mail->publish("hoge",[],function($m){
-            $m->from("t.goto@chatbox-inc.com");
-            $m->to("t.goto@chatbox-inc.com");
-        });
+        $result = $mail->publish(new \App\TestMail());
         $this->assertEquals(1,count(ArrayTransport::$mailbox));
     }
 

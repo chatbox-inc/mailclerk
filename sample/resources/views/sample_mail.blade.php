@@ -5,7 +5,7 @@
 <ul>
     @foreach($events as $event)
         <li>
-            <a href="{{$evnet["event_url"]}}">{{$evnet["title"]}}</a>
+            <a href="{{$event["event_url"]}}">{{$event["title"]}}</a>
         </li>
     @endforeach
 </ul>
