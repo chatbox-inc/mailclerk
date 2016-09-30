@@ -24,7 +24,7 @@
         "illuminate/mail": "^5.3"
     },
     "require-dev": {
-        "laravel/lumen": "^5.2",
+        "laravel/lumen": "^5.3",
         "phpunit/phpunit": "^5.4",
         "sendgrid/sendgrid": "^5.0",
         "guzzlehttp/guzzle": "^6.2"
